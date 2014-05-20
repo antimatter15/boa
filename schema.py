@@ -49,7 +49,7 @@ PidTagSchema = {
   "8CB5000B": ("AddressBookModerationEnabled", "PtypBoolean"),
   "8CE20003": ("AddressBookDistributionListMemberCount", "PtypInteger32"),
   "8CE30003": ("AddressBookDistributionListExternalMemberCount", "PtypInteger32"),
-  "8009101E": ("AddressBookMember", "PtypEmbeddedTableasspecifiedinsection2.9.6.7."),
+  "8009101E": ("AddressBookMember", "PtypEmbeddedTable"),
   "8008101E": ("AddressBookIsMemberOfDistributionList", "PtypEmbeddedTable"),
   "68051003": ("OfflineAddressBookTruncatedProperties", "PtypMultipleInteger32"),
   "8C9E0102": ("ThumbnailPhoto", "PtypBinary"),
