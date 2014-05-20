@@ -73,6 +73,7 @@ with open('udetails.oab', 'rb') as f:
 					break
 				buf += n
 			return buf
+			# return unicode(buf, errors="ignore")
 
 		def read_int():
 			# integers are cool aren't they
@@ -93,7 +94,7 @@ with open('udetails.oab', 'rb') as f:
 			(Name, Type) = PidTagSchema[PropID]
 
 			if Type == "PtypString8" or Type == "PtypString":
-				val = read_str().encode('utf-8', 'replace')
+				val = read_str()
 				rec[Name] = val
 				print Name, val
 			elif Type == "PtypBoolean":
@@ -113,7 +114,7 @@ with open('udetails.oab', 'rb') as f:
 				print Name, byte_count
 				arr = []
 				for i in range(byte_count):
-					val = read_str().encode('utf-8', 'replace')
+					val = read_str()
 					arr.append(val)
 					print i, "\t", val
 				rec[Name] = arr
@@ -140,7 +141,7 @@ with open('udetails.oab', 'rb') as f:
 				for i in range(byte_count):
 					bin_len = read_int()
 					bin = chunk.read(bin_len)
-					arr.append(bin)
+					arr.append(binascii.b2a_hex(bin))
 					print i, "\t", bin_len, binascii.b2a_hex(bin)
 				rec[Name] = arr
 			else:
@@ -149,6 +150,6 @@ with open('udetails.oab', 'rb') as f:
 		remains = chunk.read()
 		if len(remains) > 0:
 			raise "This record contains unexpected data at the end: " + remains
-
+		
 		json_out.write(json.dumps(rec) + '\n')
 		
