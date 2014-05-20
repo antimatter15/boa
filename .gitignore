@@ -2,4 +2,5 @@ udetails.oab
 stuff.numbers
 test.txt
 *.pyc
+*.zip
 test.json
